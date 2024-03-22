@@ -8,7 +8,7 @@ import TextField from "@mui/material/TextField";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const Wallet = () => {
+const Wallet = ({ userId }) => {
   const [walletBalance, setWalletBalance] = useState(null);
   const [error, setError] = useState(null);
   const [addOpenModal, setAddOpenModal] = useState(false);
@@ -20,7 +20,7 @@ const Wallet = () => {
     const fetchWalletBalance = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8001/wallet/balance/:userId"
+          `http://localhost:8001/wallet/balance/${userId}`
         );
         if (!response.data) {
           throw new Error("Failed to fetch wallet balance");
@@ -70,7 +70,7 @@ const Wallet = () => {
         const response = await axios.post(
           "http://localhost:8001/wallet/withdraw",
           {
-            userId: "65fc5147960eec2bf3ca3d1f",
+            userId: userId,
             amount: parseFloat(amount),
           }
         );

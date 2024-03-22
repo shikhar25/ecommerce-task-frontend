@@ -6,13 +6,13 @@ import InputMUI from "./commons/input-field";
 import { toast } from "react-toastify";
 const Cart = () => {
   const [cart, setCart] = useState([]);
-  const [totalAmount, setTotalAmount] = useState(0); // State to hold total amount
+  const [totalAmount, setTotalAmount] = useState(0); 
   useEffect(() => {
     fetchCart();
   }, []);
   const fetchCart = async () => {
     try {
-      const userId = "65fc5147960eec2bf3ca3d1f"; // Assuming you have the user ID available
+      const userId = userId;
       const response = await axios.get(
         `http://localhost:8001/cart/getUserCart/${userId}`,
         {}
