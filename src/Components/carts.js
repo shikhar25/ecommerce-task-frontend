@@ -7,14 +7,17 @@ import { toast } from "react-toastify";
 const Cart = () => {
   const [cart, setCart] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0); 
+  let user = localStorage.getItem('user');
+  user = JSON.parse(user)
+
+
   useEffect(() => {
     fetchCart();
   }, []);
   const fetchCart = async () => {
     try {
-      const userId = userId;
       const response = await axios.get(
-        `http://localhost:8001/cart/getUserCart/${userId}`,
+        `http://localhost:8001/cart/getUserCart/${user._id}`,
         {}
       );
       if (response.data.message === "Success") {
@@ -38,7 +41,6 @@ const Cart = () => {
         }
       );
       console.log(response.data);
-      // After removing from cart successfully, fetch the updated cart
       fetchCart();
     } catch (error) {
       console.error("Error removing product from cart:", error.message);
