@@ -72,7 +72,7 @@ const Wallet = ({ userId }) => {
         const response = await axios.post(
           "http://localhost:8001/wallet/withdraw",
           {
-            userId: userId,
+            userId: user._id,
             amount: parseFloat(amount),
           }
         );
