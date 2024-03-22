@@ -12,8 +12,7 @@
   }
   .login form input {
     padding: 10px 10px;
-    border-radius: 5px;
-    /* border: 1px solid #919191; */
+    border-radius: 5px; 
     width: 250px;
   }
   .login form .buttoncls {
