@@ -20,6 +20,7 @@ function Login() {
       });
       const { token } = response.data.data;
       localStorage.setItem(_TOKEN_141414_FSLKDFJ, token);
+      localStorage.setItem("user", JSON.stringify(response.data.data.user));
       navigate("/dashboard");
       toast.success("Welcome to dashboard");
     } catch (error) {

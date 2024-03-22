@@ -15,12 +15,14 @@ const Wallet = ({ userId }) => {
   const [deductOpenModal, setDeductOpenModal] = useState(false);
   const [amount, setAmount] = useState("");
   const [description, setDescription] = useState("");
-
+  let user = localStorage.getItem('user');
+      user = JSON.parse(user)
+  
   useEffect(() => {
     const fetchWalletBalance = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8001/wallet/balance/${userId}`
+          `http://localhost:8001/wallet/balance/${user._id}`
         );
         if (!response.data) {
           throw new Error("Failed to fetch wallet balance");
