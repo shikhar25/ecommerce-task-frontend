@@ -15,11 +15,12 @@ const Wallet = () => {
   const [deductOpenModal, setDeductOpenModal] = useState(false);
   const [amount, setAmount] = useState("");
   const [description, setDescription] = useState("");
+  
   useEffect(() => {
     const fetchWalletBalance = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8001/wallet/balance/65fc5147960eec2bf3ca3d1f"
+          "http://localhost:8001/balance/:user"
         );
         if (!response.data) {
           throw new Error("Failed to fetch wallet balance");
@@ -106,7 +107,6 @@ const Wallet = () => {
             </Typography>
           )}
           <Typography variant="body2">
-            {/* If you want to add amount in wallet please click on add button or deduc */}
             <br />
           </Typography>
           <div>
